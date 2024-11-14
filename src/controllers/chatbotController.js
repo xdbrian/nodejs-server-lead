@@ -10,12 +10,17 @@ let getWebHook = (req, res) => {
 
     let VERIFY_TOKEN = MY_VERIFY_TOKEN;
     
+    console.log("WEBHOOK_RECEIVED");
+    console.log(VERIFY_TOKEN);
     //parse
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
     let challenge = req.query['hub.challenge'];
     
     //check if mode and token are correct
+
+    console.log('mode:',mode);
+    console.log('token:',token);
     if (mode && token) {
       if (mode === 'subscribe' && token === VERIFY_TOKEN) {
         console.log("WEBHOOK_VERIFIED");
@@ -45,6 +50,8 @@ let postWebHook = (req, res) => {
         // will only ever contain one event, so we get index 0
         let webhook_event = entry.messaging[0];
         console.log(webhook_event);
+
+
         
       });
   
