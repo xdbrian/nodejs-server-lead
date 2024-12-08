@@ -18,7 +18,6 @@ let port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 
-
     app._router.stack.forEach(function(r){
         if (r.route && r.route.path){
           console.log(r.route.path)
